@@ -1,0 +1,38 @@
+{
+  "name": "ftpush",
+  "version": "0.0.0",
+  "description": "Simple, Super-powered FTP Push",
+  "main": "lib/index.js",
+  "bin": {
+    "ftpush": "bin/ftpush.js"
+  },
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/forfuturellc/ftpush.git"
+  },
+  "keywords": [
+    "ftp"
+  ],
+  "author": "GochoMugo <mugo@forfuture.co.ke> (http://www.gmugo.in)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/forfuturellc/ftpush/issues"
+  },
+  "homepage": "https://github.com/forfuturellc/ftpush#readme",
+  "dependencies": {
+    "async": "^2.0.0-rc.3",
+    "cli-output": "^1.0.0",
+    "commander": "^2.9.0",
+    "debug": "^2.2.0",
+    "jsftp": "^1.5.3",
+    "lodash": "^4.11.1",
+    "toml-require": "^1.1.0",
+    "walker": "^1.0.7"
+  }
+}

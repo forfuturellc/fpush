@@ -1,0 +1,8 @@
+# npm-installed modules
+node_modules/
+
+# directory to run tests with
+.test/
+
+# logs
+*.log
