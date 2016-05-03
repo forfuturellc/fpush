@@ -6,15 +6,16 @@ const lib = require('../lib');
 
 program
     .version(pkg.version)
-    .option('-d, --source-dir <path>', `source directory; defaults to ${lib.defaults.sourceDir}`)
-    .option('-r, --remote-dir <path>', `remote directory; defaults to ${lib.defaults.remoteDir}`)
-    .option('-c, --config-path <path>', `path to config file; defaults to \${sourceDir}/${lib.defaults.configfileName}`)
-    .option('-p, --profile <name>', `configuration profile to use; defaults to ${lib.defaults.profile}`)
+    .option('-d, --source-dir <path>', `source directory [${lib.defaults.sourceDir}]`)
+    .option('-r, --remote-dir <path>', `remote directory [${lib.defaults.remoteDir}]`)
+    .option('-c, --config-path <path>', `path to config file [\${sourceDir}/${lib.defaults.configfileName}]`)
+    .option('-p, --profile <name>', `configuration profile to use [${lib.defaults.profile}]`)
     .option('-H, --ftp-host <host>', 'FTP host')
     .option('-P, --ftp-port <port>', 'FTP port')
     .option('-U, --ftp-user <user>', 'FTP username')
     .option('-X, --ftp-pass <pass>', 'FTP password')
     .option('-s, --stop-on-error', `stop on error`)
+    .option('-j, --parallel <num>', `handle <num> directories at a time [${lib.defaults.parallel}]`)
     .parse(process.argv);
 
 lib.main({
@@ -29,6 +30,7 @@ lib.main({
         pass: program.ftpPass,
     },
     stopOnError: program.stopOnError,
+    parallel: program.parallel,
 })
 .on('DirDone', function(err, dirpath) {
     if (err) return out.error(`DirDone with Error: ${dirpath} :: ${err}`);
