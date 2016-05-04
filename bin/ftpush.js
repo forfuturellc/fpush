@@ -17,6 +17,7 @@ program
     .option('-s, --stop-on-error', `stop on error; highly EXPERIMENTAL [${lib.defaults.skipDeletion}]`)
     .option('-j, --parallel <num>', `handle <num> directories at a time [${lib.defaults.parallel}]`)
     .option('-k, --skip-deletion', `skip deleting remote files [${lib.defaults.skipDeletion}]`)
+    .option('-i, --ignore-filelist', `ignore file-list [${lib.defaults.ignoreFilelist}]`)
     .parse(process.argv);
 
 lib.main({
@@ -33,6 +34,7 @@ lib.main({
     stopOnError: program.stopOnError,
     parallel: program.parallel,
     skipDeletion: program.skipDeletion,
+    ignoreFilelist: program.ignoreFilelist,
 })
 .on('DirDone', function(err, dirpath) {
     if (err) return out.error(`DirDone with Error: ${dirpath} :: ${err}`);
