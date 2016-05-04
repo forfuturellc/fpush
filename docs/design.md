@@ -91,11 +91,14 @@ Using the diffs generated in the previous stage:
 <a name="compare"></a>
 ### comparing remote and local files:
 
-Using a retrieved file-list, a local file is considered newer if:
+Using a retrieved file-list, a local file is considered **changed** if:
 
-* it is **not** listed in the file-list
+* it is **not** listed in the file-list, or
 * checksum of the remote file, as recorded in the file-list, is
-  different from that of the local file
+  different from that of the local file, or
+* the remote file is missing in the remote directory, despite having
+  same or different checksum with the local file, or
+* we are ignoring the file-list, during diff-generation
 
 
 

@@ -28,6 +28,12 @@ $ npm install ftpush --global
 $ ftpush --help
 ```
 
+See also:
+
+* [configuring the tool][config]
+
+[config]:https://github.com/forfuturellc/ftpush/blob/master/docs/configuration.md
+
 
 <a name="principles"></a>
 ## project principles:
@@ -43,6 +49,8 @@ $ ftpush --help
 * **Minimal**: The tool just handles pushing files to the remote server.
   The tool should provide hooks or plugin support to extend itself.
   We should try as much as possible to reduce the code!
+* **Embeddable**: The tool exposes an API that allows other programs to
+  use. The CLI employs this API itself.
 
 
 <a name="limitations"></a>

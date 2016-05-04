@@ -14,10 +14,12 @@ To get you familiar with the code, you may want to read the following
 documents, placed in [`docs/`][docs]:
 
 * [design of ftpush][design]
+* [API][api]
 
 
 [docs]:https://github.com/forfuturellc/ftpush/blob/master/docs
 [design]:https://github.com/forfuturellc/ftpush/blob/master/docs/design.md
+[api]:https://github.com/forfuturellc/ftpush/blob/master/docs/api.md
 
 
 **HAPPY HACKING!**
