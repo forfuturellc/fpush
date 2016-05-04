@@ -14,7 +14,7 @@ program
     .option('-P, --ftp-port <port>', 'FTP port')
     .option('-U, --ftp-user <user>', 'FTP username')
     .option('-X, --ftp-pass <pass>', 'FTP password')
-    .option('-s, --stop-on-error', `stop on error`)
+    .option('-s, --stop-on-error', `stop on error; highly EXPERIMENTAL`)
     .option('-j, --parallel <num>', `handle <num> directories at a time [${lib.defaults.parallel}]`)
     .parse(process.argv);
 
