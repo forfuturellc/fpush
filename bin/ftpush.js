@@ -16,6 +16,7 @@ program
     .option('-X, --ftp-pass <pass>', 'FTP password')
     .option('-s, --stop-on-error', `stop on error; highly EXPERIMENTAL`)
     .option('-j, --parallel <num>', `handle <num> directories at a time [${lib.defaults.parallel}]`)
+    .option('-k, --skip-deletion', `skip deleting remote files [${lib.defaults.skipDeletion}]`)
     .parse(process.argv);
 
 lib.main({
@@ -31,6 +32,7 @@ lib.main({
     },
     stopOnError: program.stopOnError,
     parallel: program.parallel,
+    skipDeletion: program.skipDeletion,
 })
 .on('DirDone', function(err, dirpath) {
     if (err) return out.error(`DirDone with Error: ${dirpath} :: ${err}`);
