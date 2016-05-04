@@ -100,6 +100,11 @@ Using a retrieved file-list, a local file is considered **changed** if:
   same or different checksum with the local file, or
 * we are ignoring the file-list, during diff-generation
 
+A remote file is considered **deleted** if:
+
+* it is present in the remote directory **but** missing in the local
+  directory
+
 
 
 <a name="filelist"></a>
