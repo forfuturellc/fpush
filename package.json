@@ -4,7 +4,7 @@
   "description": "Simple, Super-powered FTP Push",
   "main": "lib/index.js",
   "bin": {
-    "ftpush": "bin/ftpush.js"
+    "ftpush": "bin/ftpush"
   },
   "directories": {
     "doc": "docs"
