@@ -1,1 +1,2 @@
-bin/ftpush.js
+#!/usr/bin/env node
+require('..').cli.run();
