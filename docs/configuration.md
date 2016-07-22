@@ -42,6 +42,7 @@ As a demonstration:
 
 ```toml
 [default]
+sourceDir = "dist/"
 remoteDir = "public_html/"
 
     [default.ftp]
@@ -51,6 +52,7 @@ remoteDir = "public_html/"
     pass = "pass"
 
 [production]
+sourceDir = "dist/"
 remoteDir = ""
 
     [production.ftp]
