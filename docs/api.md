@@ -17,6 +17,7 @@ Return an `EventEmitter` with the following events:
 
 * `DirDone(err, dirpath)`: done handling a (sub-)directory
     * `dirpath` (String): relative path to the (sub-)directory
+* `ConfigError(err)`: error occurred handling configuration
 * `FTPError(err)`: error occurred with the FTP connection
 * `WalkerError(err)`: error occurred while walking the source directory
 * `Exit(err)`: the process is complete
