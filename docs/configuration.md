@@ -31,6 +31,10 @@ information in square brackets, i.e. `[<default-value>]`.
 The tool uses a Configuration file, named `.ftpush.toml`, by default.
 The file should be written in [TOML][toml].
 
+If `--config-path <path>` is used, the file pointed to by `<path>` is used.
+Otherwise, the file is expected to exist in the current working directory
+of the process.
+
 **Warning:** The current implementation requires the file end with the
 `.toml` extension.
 
