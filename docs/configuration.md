@@ -91,6 +91,8 @@ These provide fallbacks, when values for most options are **not** provided.
   `'.ftpush.toml'`
 * **filelistName**: name of the file-list. Defaults to `'.ftpush.list'`
 * **parallel**: number of directories to handle in parallel. Defaults to `1`.
+  Unlimited parallelism is triggered if this value is equal or less than `0`.
+  See [how parallelism works][parallelism] for more information.
 * **skipDeletion**: whether to skip deletion of remote files. Defaults to
   `false`
 * **ignoreFilelist**: whether to ignore the file-list. Defaults to `false`
@@ -98,3 +100,4 @@ These provide fallbacks, when values for most options are **not** provided.
 
 
 [toml]:https://github.com/toml-lang/toml
+[parallelism]:https://github.com/forfuturellc/ftpush/blob/master/docs/design.md#parallelism

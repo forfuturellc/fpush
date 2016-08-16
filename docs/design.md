@@ -9,6 +9,7 @@
 * [the push process](#process)
 * [comparing local and remote files](#compare)
 * [file-list](#filelist)
+* [parallelism](#parallelism)
 * [hooks](#hooks)
 * [directory structure](#directory-structure)
 * [dependencies](#deps)
@@ -124,6 +125,29 @@ For example,
 ```
 filename    e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ```
+
+
+<a name="parallelism"></a>
+### parallelism:
+
+To increase throughput of the pushing files to the remote server, parallelism
+is achieved by opening multiple connections. Multiple directories are
+handled simultaneously by invoking the *push process* over a separate FTP
+connection.
+
+To ensure the implementation remains simple, the parent directories are
+handled first before their respective child directories. This ensures the
+local directory structure is re-created on the remote servers, gradually
+from top to bottom. Therefore, some connections may remain idle waiting
+for the parent directories to be created, before proceeding to handle
+child directories.
+
+Deriving from the discussion above, be careful of invoking unlimited
+parallelism. It might do more harm than good, with all the connections
+that might be opened. However, it should work in ideal circumstances.
+
+See [this issue](https://github.com/forfuturellc/ftpush/issues/1) for more
+information.
 
 
 <a name="hooks"></a>
