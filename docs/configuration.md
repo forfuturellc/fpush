@@ -96,8 +96,14 @@ These provide fallbacks, when values for most options are **not** provided.
 * **skipDeletion**: whether to skip deletion of remote files. Defaults to
   `false`
 * **ignoreFilelist**: whether to ignore the file-list. Defaults to `false`
+* **reporter**: *optional* function to receive the
+  [event-emitter][event-emitter] as its sole argument. This is particularly
+  of interest to those developing new reporters. Otherwise, if using the
+  CLI, provide the relevant name of your preferred reporter, which defaults
+  to `'default'` for the default reporter
 
 
 
 [toml]:https://github.com/toml-lang/toml
 [parallelism]:https://github.com/forfuturellc/ftpush/blob/master/docs/design.md#parallelism
+[event-emitter]:https://github.com/forfuturellc/ftpush/blob/master/docs/api.md#event-emitter
