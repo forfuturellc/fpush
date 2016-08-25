@@ -1,0 +1,17 @@
+{
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module"
+  },
+  "env": {
+    "node": true
+  },
+  "rules": {
+    "camelcase": [1],
+    "comma-dangle": [2, "always-multiline"],
+    "new-cap": [0],
+    "no-shadow": [2, { "hoist": "never" }],
+    "no-underscore-dangle": [0],
+    "no-use-before-define": [2, "nofunc"]
+  }
+}
