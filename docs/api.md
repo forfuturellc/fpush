@@ -27,6 +27,7 @@ The event emitter has the following events:
 
 * `Info(message)`: general information, such as `"loading configuration"`
 * `Config(configObject)`: Configuration being used
+* `DirInfo(dirpath)`: Directory has been queued up for pushing
 * `DirDone(err, dirpath)`: done handling a (sub-)directory
     * `dirpath` (String): relative path to the (sub-)directory
 * `ConfigError(err)`: error occurred handling configuration
