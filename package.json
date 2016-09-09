@@ -1,6 +1,6 @@
 {
   "name": "ftpush",
-  "version": "0.5.2",
+  "version": "0.6.0",
   "description": "Simple, Super-powered FTP Push",
   "main": "lib/index.js",
   "bin": {
