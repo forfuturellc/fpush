@@ -31,6 +31,7 @@
     "cli-output": "^1.0.0",
     "commander": "^2.9.0",
     "debug": "^2.2.0",
+    "fixed-object": "^1.0.0",
     "jsftp": "^1.5.3",
     "lodash": "^4.15.0",
     "log-update": "^1.0.2",
