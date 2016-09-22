@@ -2,7 +2,7 @@
 
 > Simple, Super-powered File Push over FTP/SFTP
 >
-> Formally, named **[ftpush](https://npmjs.com/package/ftpush)**
+> Formerly, named **[ftpush](https://npmjs.com/package/ftpush)**
 
 
 ## introduction:
