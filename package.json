@@ -1,6 +1,6 @@
 {
   "name": "ftpush",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "description": "Simple, Super-powered FTP Push",
   "main": "bin/ftpush",
   "bin": {
