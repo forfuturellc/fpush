@@ -132,8 +132,8 @@ filename    e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 
 To increase throughput of the pushing files to the remote server, parallelism
 is achieved by opening multiple connections. Multiple directories are
-handled simultaneously by invoking the *push process* over a separate FTP
-connection.
+handled simultaneously by invoking the [push process](#push-process)
+over separate [driver connections](#drivers).
 
 To ensure the implementation remains simple, the parent directories are
 handled first before their respective child directories. This ensures the
@@ -148,13 +148,6 @@ that might be opened. However, it should work in ideal circumstances.
 
 See [this issue](https://github.com/forfuturellc/ftpush/issues/1) for more
 information.
-
-
-<a name="hooks"></a>
-### hooks:
-
-**<< NOT DONE >>**
-
 
 
 <a name="directory-structure"></a>

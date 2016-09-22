@@ -12,8 +12,8 @@ of decreasing precedence:
 
 These are the options provided through the tool's CLI.
 
-**Note: Since the CLI uses the API, any options passed by embedding
-programs should consider this same precedence.**
+**Note:** Since the CLI uses the API, any options passed by embedding
+programs should consider this same precedence.
 
 To view help information in your terminal:
 
