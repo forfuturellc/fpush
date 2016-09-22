@@ -1,6 +1,6 @@
-# ftpush: Design
+# fpush: Design
 
-> Design of **ftpush**
+> Design of **fpush**
 
 
 ## table of contents:
@@ -118,7 +118,7 @@ A remote file is considered **deleted** if:
 <a name="filelist"></a>
 ### file-list:
 
-This is a file, named `.ftpush.list` by default, residing on the remote
+This is a file, named `.fpush.list` by default, residing on the remote
 server. Its main purpose is to **record the SHA checksum of pushed files**.
 
 It is basically a text file, of zero or more lines in the format:
@@ -166,7 +166,7 @@ Deriving from the discussion above, be careful of invoking unlimited
 parallelism. It might do more harm than good, with all the connections
 that might be opened. However, it should work in ideal circumstances.
 
-See [this issue](https://github.com/forfuturellc/ftpush/issues/1) for more
+See [this issue](https://github.com/forfuturellc/fpush/issues/1) for more
 information.
 
 
@@ -177,7 +177,7 @@ information.
 .
 |-- bin/                      # runnable scripts i.e. "binaries"
 |-- docs/                     # documentation on the tool
-|-- lib/                      # the 'ftpush' library
+|-- lib/                      # the 'fpush' library
     |-- drivers/              # available drivers
     |-- stages/               # module containing the stages
     `-- main.js               # program's main entry point

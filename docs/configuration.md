@@ -1,4 +1,4 @@
-# ftpush: Configuration
+# fpush: Configuration
 
 The tool uses different configuration mechanisms, if available. In order
 of decreasing precedence:
@@ -18,7 +18,7 @@ programs should consider this same precedence.
 To view help information in your terminal:
 
 ```bash
-$ ftpush --help
+$ fpush --help
 ```
 
 Default values for the different options are displayed within the help
@@ -28,7 +28,7 @@ information in square brackets, i.e. `[<default-value>]`.
 <a name="config-file"></a>
 ## Configuration file
 
-The tool uses a Configuration file, named `.ftpush.toml`, by default.
+The tool uses a Configuration file, named `.fpush.toml`, by default.
 The file should be written in [TOML][toml].
 
 If `--config-path <path>` is used, the file pointed to by `<path>` is used.
@@ -90,7 +90,7 @@ These provide fallbacks, when values for most options are **not** provided.
 * **ignoreDirs**: directories to ignore. Defaults to `['.git', '.hg', '.tmp']`
 * **configfileName**: name of the configuration file. Defaults to
   `'.ftpush.toml'`
-* **filelistName**: name of the file-list. Defaults to `'.ftpush.list'`
+* **filelistName**: name of the file-list. Defaults to `'.fpush.list'`
 * **parallel**: number of directories to handle in parallel. Defaults to `1`.
   Unlimited parallelism is triggered if this value is equal or less than `0`.
   See [how parallelism works][parallelism] for more information.

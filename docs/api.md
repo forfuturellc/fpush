@@ -1,15 +1,15 @@
-# ftpush: API
+# fpush: API
 
 The tool can be embedded in other applications.
 
 ```js
-const ftpush = require('ftpush');
+const fpush = require('fpush');
 ```
 
 
-## ftpush.main(options)
+## fpush.main(options)
 
-This serves as the main entry point for ftpush.
+This serves as the main entry point for fpush.
 
 * `options` (Object): see the [options section][options]
 
@@ -95,7 +95,7 @@ emitter.on('DirInfo', function(dirpath, info) {
 ```
 
 
-## ftpush.defaults
+## fpush.defaults
 
 This is an object containing the default values for the different options.
 See the [section on options][options] for more information on this.
@@ -103,9 +103,9 @@ See the [section on options][options] for more information on this.
 You may manipulate these values to your liking.
 
 
-[options]:https://github.com/forfuturellc/ftpush/blob/master/docs/configuration.md#options
-[push-process]:https://github.com/forfuturellc/ftpush/blob/master/docs/design.md#process
-[remote-state]:https://github.com/forfuturellc/ftpush/blob/master/docs/design.md#stage-remote-state
-[local-state]:https://github.com/forfuturellc/ftpush/blob/master/docs/design.md#stage-local-state
-[diffs]:https://github.com/forfuturellc/ftpush/blob/master/docs/design.md#stage-diffs
-[update]:https://github.com/forfuturellc/ftpush/blob/master/docs/design.md#stage-update
+[options]:https://github.com/forfuturellc/fpush/blob/master/docs/configuration.md#options
+[push-process]:https://github.com/forfuturellc/ftush/blob/master/docs/design.md#push-process
+[remote-state]:https://github.com/forfuturellc/ftush/blob/master/docs/design.md#stage-remote-state
+[local-state]:https://github.com/forfuturellc/ftush/blob/master/docs/design.md#stage-local-state
+[diffs]:https://github.com/forfuturellc/ftush/blob/master/docs/design.md#stage-diffs
+[update]:https://github.com/forfuturellc/ftush/blob/master/docs/design.md#stage-update
