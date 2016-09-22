@@ -38,6 +38,10 @@ of the process.
 **Warning:** The current implementation requires the file end with the
 `.toml` extension.
 
+**Note:** Embedding developers do **not** need to use the configuration
+file as they can provide all the necessary options through the
+[exposed API][api].
+
 As a demonstration:
 
 ```toml
@@ -54,8 +58,11 @@ remoteDir = "public_html/"
 [production]
 sourceDir = "dist/"
 remoteDir = ""
+driver    = "sftp"
 
-    [production.ftp]
+    # configuration for the SFTP driver
+    # the above section, used FTP driver
+    [production.sftp]
     host = "ftp.example.com"
     port = 21
     user = "production"
@@ -79,12 +86,6 @@ These provide fallbacks, when values for most options are **not** provided.
   directory
 * **remoteDir**: destination directory in the remote server. Defaults to
   the default directory in which the FTP connection is opened in
-* **ftp**: FTP connection configuration
-    * **host**: host name of the remote server, e.g. `'ftp.example.com'`. **No
-    default for this option! You're required to provide one.**
-    * **port**: port bound by the FTP service. Defaults to `21`
-    * **user**: username to authenticate with. Defaults to `'anonymous'`
-    * **pass**: password to authenticate with. Defaults to `'anonymous'`
 * **stopOnError**: exit early, on the first error
 * **ignoreDirs**: directories to ignore. Defaults to `['.git', '.hg', '.tmp']`
 * **configfileName**: name of the configuration file. Defaults to
@@ -101,6 +102,23 @@ These provide fallbacks, when values for most options are **not** provided.
   of interest to those developing new reporters. Otherwise, if using the
   CLI, provide the relevant name of your preferred reporter, which defaults
   to `'default'` for the default reporter
+* **driver**: *optional* string identifying the driver to be used.
+  Defaults to `'ftp'`. Available options: `'ftp'`, `'sftp'`.
+* **ftp**: FTP connection configuration, necessary if **driver** is set to
+  `'ftp'`
+    * **host**: host name of the remote server, e.g. `'ftp.example.com'`. **No
+    default for this option! You're required to provide one.**
+    * **port**: port bound by the FTP service. Defaults to `21`
+    * **user**: username to authenticate with. Defaults to `'anonymous'`
+    * **pass**: password to authenticate with. Defaults to `'anonymous'`
+* **sftp**: SFTP connection configuration, necessary if **driver** is set to
+  `'sftp'`
+    * **host**: host name of the remote server, e.g. `'sftp.example.com'`. **No
+    default for this option! You're required to provide one.**
+    * **port**: port bound by the SFTP service. Defaults to `22`
+    * **user**: username to authenticate with. Defaults to `'anonymous'`
+    * **pass**: password to authenticate with. Defaults to `'anonymous'`
+
 
 
 

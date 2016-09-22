@@ -47,6 +47,7 @@ See also:
   be re-executed in whole. This is in consideration to the slow internet
   connections in some remote areas we work in.
 * **Minimal**: The tool just handles pushing files to the remote server.
+  The internal core depends on **drivers** to access remote files.
   We should try as much as possible to reduce the code!
 * **Embeddable**: The tool exposes an API that allows other programs to
   use. The CLI employs this API itself.

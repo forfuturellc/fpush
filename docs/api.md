@@ -34,7 +34,7 @@ The event emitter has the following events:
     * `dirpath`: [Directory Path](#dirpath)
     * `info`: [Directory Information](#dirinfo)
 * `ConfigError(err)`: error occurred handling configuration
-* `FTPError(err)`: error occurred with the FTP connection
+* `DriverError(err)`: error occurred with the driver connection
 * `WalkerError(err)`: error occurred while walking the source directory
 * `Exit(err)`: the entire process is complete
 

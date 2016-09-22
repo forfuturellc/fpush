@@ -9,6 +9,7 @@
 * [the push process](#process)
 * [comparing local and remote files](#compare)
 * [file-list](#filelist)
+* [drivers](#drivers)
 * [parallelism](#parallelism)
 * [hooks](#hooks)
 * [directory structure](#directory-structure)
@@ -39,6 +40,12 @@ The file-system walker traverses the source directory, firing the process
 for each directory it encounters. Therefore, each directory, including
 the source directory itself, goes through the above stages.
 
+The process, for each directory, is associated with a
+**[driver connection](#drivers)** to allow operations on the remote servers
+to be executed. Thus, the process is entirely unaware of the protocol
+being used to access the remote server.
+
+
 <a name="stage-remote-state"></a>
 #### Stage I: Remote State
 
@@ -47,7 +54,7 @@ the source directory itself, goes through the above stages.
 The state of the remote directory includes:
 
 * files contained in the remote directory: in simpler terms, it's a `ls`
-  through the FTP connection
+  through the driver connection
 * content of the file-list: the file-list is downloaded from the remote
   server
 
@@ -127,6 +134,19 @@ filename    e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ```
 
 
+<a name="drivers"></a>
+### drivers:
+
+The internal core depends on **drivers** to connect to remote servers
+and manipulate the remote files and directories. A **driver connection**
+is created and passed to the [push process](#process) to allow
+its operations to be executed.
+
+This use of drivers allows the [push process](#process) be
+applied to protocols unforeseen and not-implemented by the core
+developers.
+
+
 <a name="parallelism"></a>
 ### parallelism:
 
@@ -158,6 +178,7 @@ information.
 |-- bin/                      # runnable scripts i.e. "binaries"
 |-- docs/                     # documentation on the tool
 |-- lib/                      # the 'ftpush' library
+    |-- drivers/              # available drivers
     |-- stages/               # module containing the stages
     `-- main.js               # program's main entry point
 `-- package.json              # manifest file
@@ -172,12 +193,13 @@ information.
 The main dependencies used are:
 
 * [jsftp][jsftp]: client FTP library
+* [ssh2][ssh2]: client SFTP library
 * [walker][walker]: directory walker
 * [async][async]: async utilities
 * [toml-require][toml-require]: `require()` .toml files
 
 [jsftp]:https://github.com/sergi/jsftp
+[ssh2]:https://github.com/mscdex/ssh2
 [walker]:https://github.com/daaku/nodejs-walker
 [async]:https://github.com/caolan/async
 [toml-require]:https://github.com/BinaryMuse/toml-require
-
