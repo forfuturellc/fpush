@@ -6,12 +6,11 @@
 ## table of contents:
 
 * [terminology](#terminology)
-* [the push process](#process)
+* [the push process](#push-process)
 * [comparing local and remote files](#compare)
 * [file-list](#filelist)
 * [drivers](#drivers)
 * [parallelism](#parallelism)
-* [hooks](#hooks)
 * [directory structure](#directory-structure)
 * [dependencies](#deps)
 
@@ -26,7 +25,7 @@
 * **remote directory**: a directory residing on the remote machine
 
 
-<a name="process"></a>
+<a name="push-process"></a>
 ### The push process:
 
 The process can be viewed in stages, in order:
@@ -139,10 +138,10 @@ filename    e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 
 The internal core depends on **drivers** to connect to remote servers
 and manipulate the remote files and directories. A **driver connection**
-is created and passed to the [push process](#process) to allow
+is created and passed to the [push process](#push-process) to allow
 its operations to be executed.
 
-This use of drivers allows the [push process](#process) be
+This use of drivers allows the [push process](#push-process) be
 applied to protocols unforeseen and not-implemented by the core
 developers.
 
@@ -179,6 +178,7 @@ information.
 |-- docs/                     # documentation on the tool
 |-- lib/                      # the 'fpush' library
     |-- drivers/              # available drivers
+    |-- reporters/            # available reporters
     |-- stages/               # module containing the stages
     `-- main.js               # program's main entry point
 `-- package.json              # manifest file

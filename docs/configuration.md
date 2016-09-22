@@ -70,11 +70,13 @@ driver    = "sftp"
 ```
 
 In the example above, `default` and `production` are two different
-**profiles**, that can be used to establish the FTP connection. By
-default, the **default** profile is used.
+**profiles**, that can be used to run the process.
+By default, the **default** profile is used.
+For example, in the terminal, to use the `'production'` profile, you run
+`fpush --profile production`.
 
 For each profile, options as defined in the [options](#options)
-section are used.
+section can be used.
 
 
 <a name="defaults"></a><a name="options"></a>
@@ -88,8 +90,6 @@ These provide fallbacks, when values for most options are **not** provided.
   the default directory in which the FTP connection is opened in
 * **stopOnError**: exit early, on the first error
 * **ignoreDirs**: directories to ignore. Defaults to `['.git', '.hg', '.tmp']`
-* **configfileName**: name of the configuration file. Defaults to
-  `'.ftpush.toml'`
 * **filelistName**: name of the file-list. Defaults to `'.fpush.list'`
 * **parallel**: number of directories to handle in parallel. Defaults to `1`.
   Unlimited parallelism is triggered if this value is equal or less than `0`.
@@ -119,9 +119,16 @@ These provide fallbacks, when values for most options are **not** provided.
     * **user**: username to authenticate with. Defaults to `'anonymous'`
     * **pass**: password to authenticate with. Defaults to `'anonymous'`
 
+The following options can **not** be provided in the configuration file
+(for obvious reasons):
+
+* **profile**: name of profile to use. Defaults to `'default'`.
+* **configFilename**: name of the configuration file. Defaults to
+  `'.fpush.toml'`
+* **configFilepath**: path to the configuration file.
 
 
-
+[api]:https://github.com/forfuturellc/fpush/blob/master/docs/api.md
+[event-emitter]:https://github.com/forfuturellc/fpush/blob/master/docs/api.md#event-emitter
+[parallelism]:https://github.com/forfuturellc/fpush/blob/master/docs/design.md#parallelism
 [toml]:https://github.com/toml-lang/toml
-[parallelism]:https://github.com/forfuturellc/ftpush/blob/master/docs/design.md#parallelism
-[event-emitter]:https://github.com/forfuturellc/ftpush/blob/master/docs/api.md#event-emitter
