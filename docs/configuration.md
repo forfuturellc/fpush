@@ -1,4 +1,4 @@
-# ftpush: Configuration
+# fpush: Configuration
 
 The tool uses different configuration mechanisms, if available. In order
 of decreasing precedence:
@@ -12,13 +12,13 @@ of decreasing precedence:
 
 These are the options provided through the tool's CLI.
 
-**Note: Since the CLI uses the API, any options passed by embedding
-programs should consider this same precedence.**
+**Note:** Since the CLI uses the API, any options passed by embedding
+programs should consider this same precedence.
 
 To view help information in your terminal:
 
 ```bash
-$ ftpush --help
+$ fpush --help
 ```
 
 Default values for the different options are displayed within the help
@@ -28,7 +28,7 @@ information in square brackets, i.e. `[<default-value>]`.
 <a name="config-file"></a>
 ## Configuration file
 
-The tool uses a Configuration file, named `.ftpush.toml`, by default.
+The tool uses a Configuration file, named `.fpush.toml`, by default.
 The file should be written in [TOML][toml].
 
 If `--config-path <path>` is used, the file pointed to by `<path>` is used.
@@ -37,6 +37,10 @@ of the process.
 
 **Warning:** The current implementation requires the file end with the
 `.toml` extension.
+
+**Note:** Embedding developers do **not** need to use the configuration
+file as they can provide all the necessary options through the
+[exposed API][api].
 
 As a demonstration:
 
@@ -54,8 +58,11 @@ remoteDir = "public_html/"
 [production]
 sourceDir = "dist/"
 remoteDir = ""
+driver    = "sftp"
 
-    [production.ftp]
+    # configuration for the SFTP driver
+    # the above section, used FTP driver
+    [production.sftp]
     host = "ftp.example.com"
     port = 21
     user = "production"
@@ -63,11 +70,13 @@ remoteDir = ""
 ```
 
 In the example above, `default` and `production` are two different
-**profiles**, that can be used to establish the FTP connection. By
-default, the **default** profile is used.
+**profiles**, that can be used to run the process.
+By default, the **default** profile is used.
+For example, in the terminal, to use the `'production'` profile, you run
+`fpush --profile production`.
 
 For each profile, options as defined in the [options](#options)
-section are used.
+section can be used.
 
 
 <a name="defaults"></a><a name="options"></a>
@@ -79,17 +88,9 @@ These provide fallbacks, when values for most options are **not** provided.
   directory
 * **remoteDir**: destination directory in the remote server. Defaults to
   the default directory in which the FTP connection is opened in
-* **ftp**: FTP connection configuration
-    * **host**: host name of the remote server, e.g. `'ftp.example.com'`. **No
-    default for this option! You're required to provide one.**
-    * **port**: port bound by the FTP service. Defaults to `21`
-    * **user**: username to authenticate with. Defaults to `'anonymous'`
-    * **pass**: password to authenticate with. Defaults to `'anonymous'`
 * **stopOnError**: exit early, on the first error
 * **ignoreDirs**: directories to ignore. Defaults to `['.git', '.hg', '.tmp']`
-* **configfileName**: name of the configuration file. Defaults to
-  `'.ftpush.toml'`
-* **filelistName**: name of the file-list. Defaults to `'.ftpush.list'`
+* **filelistName**: name of the file-list. Defaults to `'.fpush.list'`
 * **parallel**: number of directories to handle in parallel. Defaults to `1`.
   Unlimited parallelism is triggered if this value is equal or less than `0`.
   See [how parallelism works][parallelism] for more information.
@@ -101,9 +102,33 @@ These provide fallbacks, when values for most options are **not** provided.
   of interest to those developing new reporters. Otherwise, if using the
   CLI, provide the relevant name of your preferred reporter, which defaults
   to `'default'` for the default reporter
+* **driver**: *optional* string identifying the driver to be used.
+  Defaults to `'ftp'`. Available options: `'ftp'`, `'sftp'`.
+* **ftp**: FTP connection configuration, necessary if **driver** is set to
+  `'ftp'`
+    * **host**: host name of the remote server, e.g. `'ftp.example.com'`. **No
+    default for this option! You're required to provide one.**
+    * **port**: port bound by the FTP service. Defaults to `21`
+    * **user**: username to authenticate with. Defaults to `'anonymous'`
+    * **pass**: password to authenticate with. Defaults to `'anonymous'`
+* **sftp**: SFTP connection configuration, necessary if **driver** is set to
+  `'sftp'`
+    * **host**: host name of the remote server, e.g. `'sftp.example.com'`. **No
+    default for this option! You're required to provide one.**
+    * **port**: port bound by the SFTP service. Defaults to `22`
+    * **user**: username to authenticate with. Defaults to `'anonymous'`
+    * **pass**: password to authenticate with. Defaults to `'anonymous'`
+
+The following options can **not** be provided in the configuration file
+(for obvious reasons):
+
+* **profile**: name of profile to use. Defaults to `'default'`.
+* **configFilename**: name of the configuration file. Defaults to
+  `'.fpush.toml'`
+* **configFilepath**: path to the configuration file.
 
 
-
+[api]:https://github.com/forfuturellc/fpush/blob/master/docs/api.md
+[event-emitter]:https://github.com/forfuturellc/fpush/blob/master/docs/api.md#event-emitter
+[parallelism]:https://github.com/forfuturellc/fpush/blob/master/docs/design.md#parallelism
 [toml]:https://github.com/toml-lang/toml
-[parallelism]:https://github.com/forfuturellc/ftpush/blob/master/docs/design.md#parallelism
-[event-emitter]:https://github.com/forfuturellc/ftpush/blob/master/docs/api.md#event-emitter

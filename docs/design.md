@@ -1,16 +1,16 @@
-# ftpush: Design
+# fpush: Design
 
-> Design of **ftpush**
+> Design of **fpush**
 
 
 ## table of contents:
 
 * [terminology](#terminology)
-* [the push process](#process)
+* [the push process](#push-process)
 * [comparing local and remote files](#compare)
 * [file-list](#filelist)
+* [drivers](#drivers)
 * [parallelism](#parallelism)
-* [hooks](#hooks)
 * [directory structure](#directory-structure)
 * [dependencies](#deps)
 
@@ -25,7 +25,7 @@
 * **remote directory**: a directory residing on the remote machine
 
 
-<a name="process"></a>
+<a name="push-process"></a>
 ### The push process:
 
 The process can be viewed in stages, in order:
@@ -39,6 +39,12 @@ The file-system walker traverses the source directory, firing the process
 for each directory it encounters. Therefore, each directory, including
 the source directory itself, goes through the above stages.
 
+The process, for each directory, is associated with a
+**[driver connection](#drivers)** to allow operations on the remote servers
+to be executed. Thus, the process is entirely unaware of the protocol
+being used to access the remote server.
+
+
 <a name="stage-remote-state"></a>
 #### Stage I: Remote State
 
@@ -47,7 +53,7 @@ the source directory itself, goes through the above stages.
 The state of the remote directory includes:
 
 * files contained in the remote directory: in simpler terms, it's a `ls`
-  through the FTP connection
+  through the driver connection
 * content of the file-list: the file-list is downloaded from the remote
   server
 
@@ -111,7 +117,7 @@ A remote file is considered **deleted** if:
 <a name="filelist"></a>
 ### file-list:
 
-This is a file, named `.ftpush.list` by default, residing on the remote
+This is a file, named `.fpush.list` by default, residing on the remote
 server. Its main purpose is to **record the SHA checksum of pushed files**.
 
 It is basically a text file, of zero or more lines in the format:
@@ -127,13 +133,26 @@ filename    e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 ```
 
 
+<a name="drivers"></a>
+### drivers:
+
+The internal core depends on **drivers** to connect to remote servers
+and manipulate the remote files and directories. A **driver connection**
+is created and passed to the [push process](#push-process) to allow
+its operations to be executed.
+
+This use of drivers allows the [push process](#push-process) be
+applied to protocols unforeseen and not-implemented by the core
+developers.
+
+
 <a name="parallelism"></a>
 ### parallelism:
 
 To increase throughput of the pushing files to the remote server, parallelism
 is achieved by opening multiple connections. Multiple directories are
-handled simultaneously by invoking the *push process* over a separate FTP
-connection.
+handled simultaneously by invoking the [push process](#push-process)
+over separate [driver connections](#drivers).
 
 To ensure the implementation remains simple, the parent directories are
 handled first before their respective child directories. This ensures the
@@ -146,15 +165,8 @@ Deriving from the discussion above, be careful of invoking unlimited
 parallelism. It might do more harm than good, with all the connections
 that might be opened. However, it should work in ideal circumstances.
 
-See [this issue](https://github.com/forfuturellc/ftpush/issues/1) for more
+See [this issue](https://github.com/forfuturellc/fpush/issues/1) for more
 information.
-
-
-<a name="hooks"></a>
-### hooks:
-
-**<< NOT DONE >>**
-
 
 
 <a name="directory-structure"></a>
@@ -164,7 +176,9 @@ information.
 .
 |-- bin/                      # runnable scripts i.e. "binaries"
 |-- docs/                     # documentation on the tool
-|-- lib/                      # the 'ftpush' library
+|-- lib/                      # the 'fpush' library
+    |-- drivers/              # available drivers
+    |-- reporters/            # available reporters
     |-- stages/               # module containing the stages
     `-- main.js               # program's main entry point
 `-- package.json              # manifest file
@@ -179,12 +193,13 @@ information.
 The main dependencies used are:
 
 * [jsftp][jsftp]: client FTP library
+* [ssh2][ssh2]: client SFTP library
 * [walker][walker]: directory walker
 * [async][async]: async utilities
 * [toml-require][toml-require]: `require()` .toml files
 
 [jsftp]:https://github.com/sergi/jsftp
+[ssh2]:https://github.com/mscdex/ssh2
 [walker]:https://github.com/daaku/nodejs-walker
 [async]:https://github.com/caolan/async
 [toml-require]:https://github.com/BinaryMuse/toml-require
-

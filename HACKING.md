@@ -8,18 +8,18 @@ Before proceeding any further, read the following documents:
 
 [contributing]:https://github.com/forfuturellc/workflow/blob/master/collaboration.md
 [coc]:https://github.com/forfuturellc/workflow/blob/master/code-of-conduct.md
-[license]:https://github.com/forfuturellc/ftpush/blob/master/LICENSE.txt
+[license]:https://github.com/forfuturellc/fpush/blob/master/LICENSE.txt
 
 To get you familiar with the code, you may want to read the following
 documents, placed in [`docs/`][docs]:
 
-* [design of ftpush][design]
+* [design of fpush][design]
 * [API][api]
 
 
-[docs]:https://github.com/forfuturellc/ftpush/blob/master/docs
-[design]:https://github.com/forfuturellc/ftpush/blob/master/docs/design.md
-[api]:https://github.com/forfuturellc/ftpush/blob/master/docs/api.md
+[docs]:https://github.com/forfuturellc/fpush/blob/master/docs
+[design]:https://github.com/forfuturellc/fpush/blob/master/docs/design.md
+[api]:https://github.com/forfuturellc/fpush/blob/master/docs/api.md
 
 
 **HAPPY HACKING!**

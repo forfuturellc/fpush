@@ -1,10 +1,10 @@
 {
-  "name": "ftpush",
+  "name": "fpush",
   "version": "0.6.0",
-  "description": "Simple, Super-powered FTP Push",
+  "description": "Simple, Super-powered File Push over FTP/SFTP",
   "main": "lib/index.js",
   "bin": {
-    "ftpush": "bin/ftpush"
+    "fpush": "bin/fpush"
   },
   "directories": {
     "doc": "docs"
@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/forfuturellc/ftpush.git"
+    "url": "git+ssh://git@github.com/forfuturellc/fpush.git"
   },
   "keywords": [
     "ftp"
@@ -22,19 +22,21 @@
   "author": "GochoMugo <mugo@forfuture.co.ke> (http://www.gmugo.in)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/forfuturellc/ftpush/issues"
+    "url": "https://github.com/forfuturellc/fpush/issues"
   },
-  "homepage": "https://github.com/forfuturellc/ftpush#readme",
+  "homepage": "https://github.com/forfuturellc/fpush#readme",
   "dependencies": {
     "async": "^2.0.1",
     "chalk": "^1.1.3",
     "cli-output": "^1.0.0",
     "commander": "^2.9.0",
+    "concat-stream": "^1.5.2",
     "debug": "^2.2.0",
     "fixed-object": "^1.0.0",
     "jsftp": "^1.5.3",
     "lodash": "^4.15.0",
     "log-update": "^1.0.2",
+    "ssh2": "^0.5.1",
     "toml-require": "^1.1.0",
     "unicons": "0.0.3",
     "update-notifier": "^1.0.2",

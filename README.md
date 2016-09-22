@@ -1,10 +1,9 @@
-# ftpush
+# fpush
 
-> Simple, Super-powered FTP Push
+> Simple, Super-powered File Push over FTP/SFTP
+>
+> Formally, named **[ftpush](https://npmjs.com/package/ftpush)**
 
-> **NOTE! NOTE! NOTE!
-> :construction: WORK IN PROGRESS :construction:
-> NOTE! NOTE! NOTE!**
 
 ## introduction:
 
@@ -24,15 +23,15 @@ will direct its development to a better place.
 ## installation:
 
 ```bash
-$ npm install ftpush --global
-$ ftpush --help
+$ npm install fpush --global
+$ fpush --help
 ```
 
 See also:
 
 * [configuring the tool][config]
 
-[config]:https://github.com/forfuturellc/ftpush/blob/master/docs/configuration.md
+[config]:https://github.com/forfuturellc/fpush/blob/master/docs/configuration.md
 
 
 <a name="principles"></a>
@@ -47,7 +46,7 @@ See also:
   be re-executed in whole. This is in consideration to the slow internet
   connections in some remote areas we work in.
 * **Minimal**: The tool just handles pushing files to the remote server.
-  The tool should provide hooks or plugin support to extend itself.
+  The internal core depends on **drivers** to access remote files.
   We should try as much as possible to reduce the code!
 * **Embeddable**: The tool exposes an API that allows other programs to
   use. The CLI employs this API itself.
@@ -67,7 +66,7 @@ See also:
 To start hacking on the application, read [HACKING.md][hacking] for
 guidelines and other relevant information.
 
-[hacking]:https://github.com/forfuturellc/ftpush/blob/master/HACKING.md
+[hacking]:https://github.com/forfuturellc/fpush/blob/master/HACKING.md
 
 
 ## license:
