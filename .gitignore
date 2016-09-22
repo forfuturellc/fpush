@@ -1,0 +1,9 @@
+# npm-installed modules
+node_modules/
+
+# directory and config file to run tests with
+.test/
+.ftpush.toml
+
+# logs
+*.log

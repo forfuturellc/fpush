@@ -1,0 +1,24 @@
+{
+  "name": "ftpush",
+  "version": "0.7.0",
+  "description": "Simple, Super-powered FTP Push",
+  "main": "bin/ftpush",
+  "bin": {
+    "ftpush": "bin/ftpush"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/forfuturellc/fpush.git"
+  },
+  "keywords": [
+    "ftp"
+  ],
+  "author": "GochoMugo <mugo@forfuture.co.ke> (http://www.gmugo.in)",
+  "bugs": {
+    "url": "https://github.com/forfuturellc/fpush/issues"
+  },
+  "homepage": "https://github.com/forfuturellc/fpush#readme",
+  "dependencies": {
+    "chalk": "^1.1.3"
+  }
+}

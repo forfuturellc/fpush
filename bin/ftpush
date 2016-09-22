@@ -1,0 +1,11 @@
+#!/usr/bin/env node
+const chalk = require('chalk');
+console.error([
+    '',
+    chalk.red('\tERROR:'),
+    '',
+    '\tThis command (and its package) has been ' + chalk.underline('moved to a new location.'),
+    '\tPlease proceed to ' + chalk.underline.yellow('https://npmjs.com/package/fpush') + ' to view the new package.',
+    '',
+].join('\n'));
+process.exit(1);
